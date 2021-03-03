@@ -36,6 +36,7 @@ function draw() {
       timer++;
       if (timer > 3 * 60) {
         state = 0;
+        timer = 0;
       }
       break;
 
