@@ -6,10 +6,13 @@ function setup() {
   //  cars.push(new Car());
   //  }
   noStroke();
+   imageMode(CENTER);
+  bkgd = loadImage("firework.jpg");
 }
 
 function draw() {
   background(100);
+  image(bkgd, width/2, height/2, width, height);
   cars.push(new Car());
 
   for (let i = 0; i < cars.length; i++) {

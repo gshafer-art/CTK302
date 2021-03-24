@@ -4,13 +4,19 @@ let maxTimer = 500;
 let timer = 0;
 let frogPos;
 let state = 0;
-let song2, berry, bkgd, clouds, basket, picnic, sunset;
+let song1, song2, song3, song4, berry, bkgd, clouds, basket, picnic, sunset;
 
-//function preload() {
-  //song2 = loadSound("assets/bksong.m4a");
+function preload() {
+  song1 = loadSound("assets/beats.m4a");
+  song2 = loadSound("assets/bksong.m4a");
+  song3 = loadSound("assets/song4.m4a");
+  song4 = loadSound("assets/song5.m4a");
   //song2.loop();
-  //song2.pause();
-//}
+  song1.pause();
+  song2.pause();
+  song3.pause();
+  song4.pause();
+}
 
 function setup() {
   //createCanvas(windowWidth, windowHeight);
@@ -40,6 +46,9 @@ function draw() {
   switch (state) {
     case 0:
       background('black');
+      song1.stop();
+      song4.stop();
+      song3.play();
       image(clouds, width/2, height/2, width, height);
       fill('white');
       push();
@@ -55,7 +64,6 @@ function draw() {
 
     case 1:
       game();
-    //song2.play();
       timer++;
       if (timer > maxTimer) {
         timer = 0;
@@ -65,7 +73,7 @@ function draw() {
 
     case 2: //win
       resetTheGame();
-    //song2.pause();
+      song4.play();
       background('black');
       image(picnic, width/2, height/2, width, height);
       fill('white');
@@ -77,7 +85,7 @@ function draw() {
 
     case 3: //lose
       resetTheGame();
-    //song2.pause();
+    song1.play();
       background('black');
       image(sunset, width/2, height/2, width, height);
       fill('white');
@@ -114,6 +122,8 @@ function mouseReleased() {
 }
 
 function resetTheGame() {
+  song2.pause();
+  song2.stop();
   timer = 0;
   cars = [];
   for (let i = 0; i < maxCars; i++) {
@@ -123,6 +133,9 @@ function resetTheGame() {
 
 function game() {
   image(bkgd, width/2, height/2, width, height);
+  song3.pause();
+  song3.stop();
+  song2.play();
 
   for (let i = 0; i < cars.length; i++) {
     cars[i].display();
