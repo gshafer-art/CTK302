@@ -3,7 +3,7 @@ let maxCars = 5;
 let maxTimer = 500;
 let timer = 0;
 let frogPos;
-let state = 0;
+let state = -1;
 let song1, song2, song3, song4, berry, bkgd, clouds, basket, picnic, sunset;
 
 function preload() {
@@ -44,11 +44,16 @@ picnic = loadImage("assets/picnic.jpg");
 function draw() {
 
   switch (state) {
+
+    case -1:
+    song1.stop();
+    song4.stop();
+    song3.play();
+    state = 0;
+    break;
+
     case 0:
       background('black');
-      song1.stop();
-      song4.stop();
-      song3.play();
       image(clouds, width/2, height/2, width, height);
       fill('white');
       push();
@@ -63,6 +68,12 @@ function draw() {
       break;
 
     case 1:
+      song3.stop();
+      song2.play();
+      state = 2;
+      break;
+
+    case 2:
       game();
       timer++;
       if (timer > maxTimer) {
@@ -71,9 +82,13 @@ function draw() {
       }
       break;
 
-    case 2: //win
+      case 3:
+        song1.play();
+        state = 5;
+        break;
+
+    case 6: //win
       resetTheGame();
-      song4.play();
       background('black');
       image(picnic, width/2, height/2, width, height);
       fill('white');
@@ -83,9 +98,13 @@ function draw() {
       text("Click to play again!", 570, 600);
       break;
 
-    case 3: //lose
+      case 4:
+        song4.play();
+        state = 6;
+        break;
+
+    case 5: //lose
       resetTheGame();
-    song1.play();
       background('black');
       image(sunset, width/2, height/2, width, height);
       fill('white');
@@ -109,20 +128,19 @@ function mouseReleased() {
       state = 1;
       break;
 
-    case 2:
+    case 6:
     resetTheGame();
-      state = 0;
+      state = -1;
       break;
 
-    case 3:
+    case 5:
     resetTheGame();
-      state = 0;
+      state = -1;
       break;
   }
 }
 
 function resetTheGame() {
-  song2.pause();
   song2.stop();
   timer = 0;
   cars = [];
@@ -133,9 +151,6 @@ function resetTheGame() {
 
 function game() {
   image(bkgd, width/2, height/2, width, height);
-  song3.pause();
-  song3.stop();
-  song2.play();
 
   for (let i = 0; i < cars.length; i++) {
     cars[i].display();
@@ -147,7 +162,7 @@ function game() {
   }
   //check to see if array = 0
   if (cars.length == 0) {
-    state = 2;
+    state = 4;
   }
 
   //frog code
