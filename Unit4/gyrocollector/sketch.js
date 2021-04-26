@@ -32,7 +32,7 @@ function setup() {
   // load any images you need
   //bunnyImage = loadImage("assets/bunny.jpg");
   smooth = loadImage("smooth.png");
-  background = loadImage("leaf.JPG");
+  leaf = loadImage("leaf.JPG");
   imageMode(CENTER);
   rectMode(CENTER);
   noStroke();
@@ -41,7 +41,7 @@ function setup() {
 function draw() {
 
   background('#c6f5ff'); // light blue
-  image(background, width/2, height/2, width, height);
+  image(leaf, width/2, height/2, width, height);
 
   // the map command !!!!
   // takes your variable and maps it from range 1 to range 2
