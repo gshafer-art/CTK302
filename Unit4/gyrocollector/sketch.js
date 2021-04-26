@@ -33,6 +33,7 @@ function setup() {
   //bunnyImage = loadImage("assets/bunny.jpg");
   smooth = loadImage("smooth.png");
   leaf = loadImage("leaf.JPG");
+  shop = loadImage("shop.jpg");
   imageMode(CENTER);
   rectMode(CENTER);
   noStroke();
@@ -41,7 +42,7 @@ function setup() {
 function draw() {
 
   background('#c6f5ff'); // light blue
-  image(leaf, width/2, height/2, width, height);
+  image(shop, width/2, height/2, width, height);
 
   // the map command !!!!
   // takes your variable and maps it from range 1 to range 2
@@ -57,9 +58,10 @@ function draw() {
 
   // draw the FROG
   // image(bunnyImage, 0, 0, 500, 500);
+  mush (0, 0, 100, 100);
   fill('green');
   ellipse(0, 0, 80, 80);
-  mush (0, 0, 100, 100);
+
   pop();
 
 
@@ -78,9 +80,9 @@ function draw() {
 
   // MORE DECORATIONS - write that pretty ATK type on top.
   fill('white');
-  textSize(40);
+  textSize(36);
   textAlign(CENTER);
-  text("Find Mushy!", width / 2, 600, windowWidth - 200, windowHeight - 200);
+  text("Find Mushy among the beads!", width / 2, 600, windowWidth - 200, windowHeight - 200);
 
 
   // Debugging information -- take this out when you're ready for production!
@@ -150,12 +152,12 @@ function Car() {
 
     // maybe use an image here instead!
     fill(this.r, this.g, this.b, this.a);
-    ellipse(this.pos.x - 50, this.pos.y, 50, 50);
-    ellipse(this.pos.x + 50, this.pos.y, 50, 50);
-    rect(this.pos.x + 3, this.pos.y - 30, 80, 60) ;
-    ellipse(this.pos.x - 50, this.pos.y-60, 50, 50);
-    ellipse(this.pos.x + 50, this.pos.y-60, 50, 50);
-    image(smooth, this.pos.x, this.pos.y - 30, 80, 80);
+    ellipse(this.pos.x - 50, this.pos.y, 40, 40);
+    ellipse(this.pos.x + 50, this.pos.y, 40, 40);
+    rect(this.pos.x, this.pos.y - 30, 70, 50) ;
+    ellipse(this.pos.x - 50, this.pos.y-60, 40, 40);
+    ellipse(this.pos.x + 50, this.pos.y-60, 40, 40);
+    image(smooth, this.pos.x, this.pos.y - 25, 80, 80);
 
   }
 
