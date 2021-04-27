@@ -31,7 +31,7 @@ function setup() {
 
   // load any images you need
   //bunnyImage = loadImage("assets/bunny.jpg");
-  smooth = loadImage("smooth.png");
+  smooth = loadImage("smooth.PNG");
   leaf = loadImage("leaf.JPG");
   shop = loadImage("shop.jpg");
   imageMode(CENTER);
@@ -60,7 +60,7 @@ function draw() {
   // image(bunnyImage, 0, 0, 500, 500);
   mush (0, 0, 100, 100);
   fill('green');
-  ellipse(0, 0, 80, 80);
+  //ellipse(0, 0, 80, 80);
 
   pop();
 
